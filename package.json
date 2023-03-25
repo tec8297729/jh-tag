@@ -1,6 +1,6 @@
 {
   "name": "jh-tag",
-  "version": "1.12.0",
+  "version": "0.1.0",
   "description": "auto push git last tag +1 .",
   "author": "nanyuantingfeng<nanyuantingfeng@aliyun.com>",
   "license": "MIT",
