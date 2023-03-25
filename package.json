@@ -1,8 +1,8 @@
 {
   "name": "jh-tag",
   "version": "0.1.0",
-  "description": "auto push git last tag +1 .",
-  "author": "nanyuantingfeng<nanyuantingfeng@aliyun.com>",
+  "description": "自动追加git tag版本号工具",
+  "author": "",
   "license": "MIT",
   "scripts": {
     "publish2npm": "npm publish ."
@@ -22,11 +22,7 @@
     "commander": "10.0.0",
     "execa": "5.1.1"
   },
-  "keywords": [
-    "nsh",
-    "git",
-    "tag"
-  ],
+  "keywords": [],
   "jest": {
     "moduleFileExtensions": [
       "js"
