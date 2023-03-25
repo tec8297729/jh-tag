@@ -1,6 +1,6 @@
 {
   "name": "jh-tag",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "自动追加git tag版本号工具",
   "author": "",
   "license": "MIT",
