@@ -1,7 +1,7 @@
-const execa = require("execa");
+const { runCommand } = require("./util");
 
 module.exports = async function pushNewTag({ tag, comment }) {
-  const result = await execa(
+  const result = await runCommand(
     `git tag -a ${tag} -m '${comment ? comment : tag}'`
   );
 
@@ -9,5 +9,5 @@ module.exports = async function pushNewTag({ tag, comment }) {
     return Promise.reject(new Error("push tag failed ...  try again"));
   }
 
-  return execa(`git push origin ${tag}`);
+  return runCommand(`git push origin ${tag}`);
 };

@@ -1,4 +1,4 @@
-const cp = require('child_process')
+const cp = require("child_process");
 
 function splitWith_N(str) {
   return str.split("\n");
@@ -60,33 +60,34 @@ const runCommand = (command, args) => {
   return new Promise((resolve, reject) => {
     // command传入的是npm,args是[install,-d,包名],最终拼接执行了一条shell命令
     const executedCommand = cp.spawn(command, args, {
-      stdio: 'pipe',
-      shell: true // 开启shell功能
-    })
-    let stdoutData
+      stdio: "pipe",
+      shell: true, // 开启shell功能
+    });
+    let stdoutData;
     // 出错时执行
-    executedCommand.on('error', (error) => {
-      reject(error)
-    })
-    executedCommand.stdout.on('data', (data) => {
-      stdoutData = data
+    executedCommand.on("error", (error) => {
+      reject(error);
+    });
+    executedCommand.stdout.on("data", (data) => {
+      stdoutData = data;
     });
     // 退出时执行
-    executedCommand.on('exit', (code, ...data) => {
+    executedCommand.on("exit", (code, ...data) => {
       if (code === 0) {
         resolve({
-          stdout: stdoutData
-        })
+          stdout: stdoutData,
+          data,
+        });
       } else {
-        reject()
+        reject();
       }
-    })
-  })
-}
+    });
+  });
+};
 
 module.exports = {
   split: splitWith_N,
   searchUseVersion,
   getBuildNo,
-  runCommand
-}
+  runCommand,
+};
