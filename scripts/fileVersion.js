@@ -41,7 +41,7 @@ async function saveFileVersion({ version, programValues }) {
       ).finally(async () => {
         runCommand("git push")
           .catch((e) => {
-            reject("git push 失败");
+            reject(`git push 失败, ${e}`);
           })
           .finally(() => {
             resolve();
