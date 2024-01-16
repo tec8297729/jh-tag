@@ -13,7 +13,6 @@ module.exports = async function tags(program) {
 
     const result = await getAllTags(version);
     const tag = calculateVersion(program._optionValues, result, version);
-    console.log({ result, version, tag }, "isFromFile");
     await saveFileVersion({
       version: tag,
       programValues: program._optionValues,
