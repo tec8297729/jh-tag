@@ -36,19 +36,20 @@ async function saveFileVersion({ version, programValues }) {
         dataJson.subversion = versionArr[versionArr.length - 1];
       }
       fs.writeFileSync(p, JSON.stringify(dataJson, null, 2));
-      await runCommand(
-        `git add . && git commit -m "feat: 更新tag版本"`
-      ).finally(async () => {
-        runCommand("git push")
-          .catch((e) => {
-            reject(`git push 失败, ${e}`);
-          })
-          .finally(() => {
-            resolve();
-          });
-      });
+      await runCommand(`git add . && git commit -m "feat: 更新tag版本"`)
+        .then(() => {
+          runCommand("git push")
+            .catch((e) => {
+              reject(`git push 失败, ${e}`);
+            })
+            .finally(() => {
+              resolve();
+            });
+        })
+        .catch((e) => {
+          reject(e);
+        });
     } catch (e) {
-      console.error(e);
       reject(e);
     }
   });

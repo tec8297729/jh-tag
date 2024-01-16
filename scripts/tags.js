@@ -13,10 +13,14 @@ module.exports = async function tags(program) {
 
     const result = await getAllTags(version);
     const tag = calculateVersion(program._optionValues, result, version);
-    await saveFileVersion({ version: tag, programValues: program._optionValues })
+    console.log({ result, version, tag }, "isFromFile");
+    await saveFileVersion({
+      version: tag,
+      programValues: program._optionValues,
+    });
     console.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", tag);
     return pushNewTag({ tag, comment: program.comment });
   } catch (e) {
-    console.error(e);
+    console.error("error", e);
   }
 };

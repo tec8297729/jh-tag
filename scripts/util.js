@@ -66,7 +66,7 @@ const runCommand = (command, args) => {
     let stdoutData;
     // 出错时执行
     executedCommand.on("error", (error) => {
-      reject(error);
+      reject("executedCommand", error);
     });
     executedCommand.stdout.on("data", (data) => {
       stdoutData = data;
