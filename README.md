@@ -1,10 +1,10 @@
-# nsh-tag
+# jh-tag
 
 > auto push git tag +1
 
 ```shell
-nsh-tag -p # 打tag基本当前版本+1
-nsh-tag -p -st # 打tag，并且保存当前tag版本到package.json中（参数：subversion）
+jh-tag -p # 打tag基本当前版本+1
+jh-tag -p -st # 打tag，并且保存当前tag版本到package.json中（参数：subversion）
 ```
 
 
