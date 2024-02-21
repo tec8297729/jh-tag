@@ -36,7 +36,7 @@ async function saveFileVersion({ version, programValues }) {
         dataJson.subversion = versionArr[versionArr.length - 1];
       }
       fs.writeFileSync(p, JSON.stringify(dataJson, null, 2));
-      await runCommand(`git add . && git commit -m "feat: 更新tag版本"`)
+      await runCommand(`git add . && git commit -m "feat: 更新tag版本${dataJson.version}.${dataJson.subversion}"`)
         .then(() => {
           runCommand("git push")
             .catch((e) => {
@@ -47,7 +47,7 @@ async function saveFileVersion({ version, programValues }) {
             });
         })
         .catch((e) => {
-          reject(e);
+          reject(`项目文件内必须有变动内容 ${e}`);
         });
     } catch (e) {
       reject(e);

@@ -1,7 +1,7 @@
 const cp = require("child_process");
 
 function splitWith_N(str) {
-  return str.split("\n");
+  return str.split("\n").filter(Boolean);
 }
 
 function getBuildNo(v) {
@@ -58,6 +58,22 @@ function searchUseVersion(tags, version, isProduction, isNoBeta, isMinio) {
 
 const runCommand = (command, args) => {
   return new Promise((resolve, reject) => {
+    // const executedCommand = cp.exec(command, (error, stdout, stderr) => {
+    //   if (error) {
+    //     reject(error);
+    //     return;
+    //   }
+    //   if (stderr) {
+    //     reject(stderr);
+    //     return;
+    //   }
+    //   resolve({ stdout, stderr });
+    // });
+    // executedCommand.on("exit", (code) => {
+    //   if (code !== 0) {
+    //     reject(`Command execution failed with code ${code}`);
+    //   }
+    // });
     // command传入的是npm,args是[install,-d,包名],最终拼接执行了一条shell命令
     const executedCommand = cp.spawn(command, args, {
       stdio: "pipe",
@@ -79,7 +95,7 @@ const runCommand = (command, args) => {
           data,
         });
       } else {
-        reject();
+        reject(new Error(`Command execution failed with code ${code}，${data}`));
       }
     });
   });

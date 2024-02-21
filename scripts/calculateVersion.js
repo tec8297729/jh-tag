@@ -8,12 +8,10 @@ module.exports = function calculateVersion(program, tagsText, version) {
     program.isMinio,
   );
   let buildNo = 0;
-
   if (tags.length > 0) {
     buildNo = util.getBuildNo(tags[0]);
     buildNo += 1;
   }
-
 
   let p = program.isProduction ? '' : 'v';
   let n = program.isNoBeta ? '-noBeta' : '';

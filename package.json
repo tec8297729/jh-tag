@@ -1,8 +1,8 @@
 {
   "name": "jh-tag",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "自动追加git tag版本号工具",
-  "author": "",
+  "author": "tec",
   "license": "MIT",
   "scripts": {
     "publish2npm": "npm publish ."
