@@ -5,7 +5,8 @@ var version = require("../package.json").version;
 var tags = require("../scripts/tags");
 
 program
-  .version(version)
+  .version(version, '-v --version')
+  .helpOption('-h --help')
   .option("-p, --isProduction", "Production Version")
   .option("-st, --saveTag", "保存tag版本号")
   .option("-n, --isNoBeta", "Privatisation Version")
